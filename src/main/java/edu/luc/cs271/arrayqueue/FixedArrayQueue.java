@@ -1,7 +1,6 @@
 package edu.luc.cs271.arrayqueue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FixedArrayQueue<E> implements SimpleQueue<E> {
@@ -43,10 +42,8 @@ public class FixedArrayQueue<E> implements SimpleQueue<E> {
   @Override
   public E peek() {
     // DONE
-    if (size == 0)
-      return null;
-    else
-      return data[front];
+    if (size == 0) return null;
+    else return data[front];
   }
 
   @Override
@@ -78,14 +75,14 @@ public class FixedArrayQueue<E> implements SimpleQueue<E> {
   @Override
   public List<E> asList() {
     // DONE implement using an ArrayList preallocated with the right size
-    List<E> newList = new ArrayList<E>();
+    List<E> newList = new ArrayList<E>(capacity);
     int j = this.front;
     while (!isEmpty()) {
-      newList.add(data[front]);
+      newList.add(data[j]);
       j = (j + 1) % capacity;
       size--;
     }
     return newList;
-    //return Arrays.asList();
+    // return Arrays.asList();
   }
 }
